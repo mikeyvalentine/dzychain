@@ -1,0 +1,63 @@
+@font-face{
+    font-family: helvetica;
+    src: url(helvetica.ttf);
+}
+header{
+    z-index: 1;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+li{
+    float: left;
+}
+button{
+    font-family: helvetica;
+    border: 1px solid black;
+    top: 10px;
+    outline: none;
+    margin: 5px 5px 50px 5px;
+}
+#title{
+    width: 100px;
+}
+#music{
+    width: 70px;
+}
+#video{
+    width: 70px;
+}
+#store{
+    width: 64px;
+}
+#contact{
+    width: 75px;
+}
+button:hover{
+    border: 1.5px solid black;
+    margin: none;
+}
+
+body{
+    position: relative;
+    top: 20%;
+}
+.wrapper{
+    position: relative;
+    border: 1px solid black;
+    display: none;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+}
+div p{
+    position: relative;
+    margin-left: 10px; 
+    font-family: serif;
+    font-weight: 300
+}
