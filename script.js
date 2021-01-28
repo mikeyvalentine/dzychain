@@ -1,44 +1,49 @@
-const titlebtn = document.getElementById('title');
-const wrapper = document.querySelector('div.wrapper');
-const buttons = document.getElementsByTagName('button');
+import * as THREE from './three/build/three.module.js';
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+const renderer = new THREE.WebGLRenderer();
 
-titlebtn.addEventListener('click',function(){
-    if(wrapper.style.display == 'none'){
-        wrapper.style.display = 'block';
-    }
-    else {
-        wrapper.style.display = 'none';
-    }
-})
+renderer.setSize( window.innerWidth/2, window.innerHeight/2, false);
+renderer.setClearColor(0xffffff, 1);
+document.body.appendChild( renderer.domElement );
 
-        console.log(buttons);
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial( {color: 0x00ff00 } );
+const cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
 
-setInterval(charChange, 5);
-/*function charChange(){
-    let string;
-    let rand;
-    let chars = ['#', '!', '@', '$', '%', '&', '+', '?'];
-    for(i = 0; i < buttons.length; i++){
-        string = buttons[i].textContent;
-        rand = Math.floor(Math.random() * 7)
-        let char = chars[rand];
-        string = char + string.slice(1,-1) + char;
-        buttons[i].textContent = string;
-    }
-}*/
-let y = 0;
-let x = 0;
-function charChange(){
-    let chars = ['#', '!', '@', '$', '%', '&', '+', '?'];
+var loader = new THREE.FontLoader();
+let textMesh;
+loader.load("./three/examples/fonts/optimer_bold.typeface.json", function(font) {
 
-    if (y == chars.length){
-        y = 0;
-    }
-    if (x == buttons.length){
-        x = 0;
-    }
-    let string = buttons[x].textContent;
-    buttons[x].textContent = chars[y] + string.slice(1,-1) + chars[y];
-    y++;
-    x++;
-    }
+    var textGeo = new THREE.TextGeometry("Daisy Chain", {
+
+        font: font,
+        size: 1,
+        height: .05,
+        curveSegments: .01,
+        bevelThickness: .01,
+        bevelSize: .01,
+        bevelEnabled: true
+
+     });
+
+     const textMat = new THREE.MeshPhysicalMaterial({color: 0xFFffFF});
+     textMesh = new THREE.Mesh(textGeo, textMat);
+ 
+     scene.add(textMesh);
+
+     return textMesh;
+ 
+});
+
+camera.position.z = 10;
+
+function animate(){
+    requestAnimationFrame(animate);
+    cube.rotation.x += .01;
+    cube.rotation.y += .01;
+    textMesh.rotation.y += .01;
+    renderer.render(scene,camera);
+}
+animate();

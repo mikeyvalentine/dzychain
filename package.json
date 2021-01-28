@@ -1,0 +1,22 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeyvalentine/dzychain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikeyvalentine/dzychain/issues"
+  },
+  "homepage": "https://github.com/mikeyvalentine/dzychain#readme",
+  "dependencies": {
+    "three": "^0.125.1"
+  }
+}
