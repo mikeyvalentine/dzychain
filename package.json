@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/mikeyvalentine/dzychain#readme",
   "dependencies": {
-    "three": "^0.125.1"
+    "three": "^0.137.0"
   }
 }
